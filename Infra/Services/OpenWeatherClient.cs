@@ -9,10 +9,13 @@ namespace Infra.Services
     {
         private readonly HttpClient _httpClient = httpClient;
         private readonly string _apiKey = configuration["OpenWeatherMap:ApiKey"];
+        private readonly string _lat = configuration["OpenWeatherMap:Latitude"];
+        private readonly string _lon = configuration["OpenWeatherMap:Longitude"];
+        private readonly string _lang = configuration["OpenWeatherMap:Language"];
 
-        public async Task<WeatherData> FetchWeatherAsync(string city)
+        public async Task<WeatherData> Fetch()
         {
-            var url = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={_apiKey}&units=metric";
+            var url = $"https://api.openweathermap.org/data/2.5/weather?lat={_lat}&lon={_lon}&appid={_apiKey}&units=metric&lang={_lang}";
             var response = await _httpClient.GetFromJsonAsync<OpenWeatherResponse>(url);
 
             return new WeatherData

@@ -4,6 +4,6 @@ namespace Core.Interfaces.External
 {
     public interface IOpenWeatherClient
     {
-        Task<WeatherData> FetchWeatherAsync(string city);
+        Task<WeatherData> Fetch();
     }
 }

@@ -6,9 +6,10 @@ namespace App.Services
 {
     public class WeatherService(IOpenWeatherClient openWeatherClient) : IWeatherService
     {
-        public async Task<WeatherData> GetWeatherAsync(string city)
+        public Task<WeatherData> GetWeatherAsync()
         {
-            return await openWeatherClient.FetchWeatherAsync(city);
+            return openWeatherClient.Fetch();
         }
     }
 }
+
