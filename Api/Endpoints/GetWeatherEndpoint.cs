@@ -1,10 +1,10 @@
 ﻿using Core.Interfaces;
-using Core.Models;
+using Core.Dtos;
 using FastEndpoints;
 
 namespace Api.Endpoints
 {
-    public class GetWeatherEndpoint(IWeatherService weatherService) : EndpointWithoutRequest<WeatherData>
+    public class GetWeatherEndpoint(IWeatherService weatherService) : EndpointWithoutRequest<GetCurrentResponse>
     {
         public override void Configure()
         {

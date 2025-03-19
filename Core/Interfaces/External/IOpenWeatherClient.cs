@@ -1,9 +1,9 @@
-﻿using Core.Models;
+﻿using Core.Dtos;
 
 namespace Core.Interfaces.External
 {
     public interface IOpenWeatherClient
     {
-        Task<WeatherData> Fetch();
+        Task<GetCurrentResponse> GetCurrent();
     }
 }

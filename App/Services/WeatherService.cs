@@ -1,14 +1,14 @@
 ﻿using Core.Interfaces;
 using Core.Interfaces.External;
-using Core.Models;
+using Core.Dtos;
 
 namespace App.Services
 {
     public class WeatherService(IOpenWeatherClient openWeatherClient) : IWeatherService
     {
-        public Task<WeatherData> GetWeatherAsync()
+        public Task<GetCurrentResponse> GetWeatherAsync()
         {
-            return openWeatherClient.Fetch();
+            return openWeatherClient.GetCurrent();
         }
     }
 }

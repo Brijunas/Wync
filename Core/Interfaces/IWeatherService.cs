@@ -1,9 +1,9 @@
-﻿using Core.Models;
+﻿using Core.Dtos;
 
 namespace Core.Interfaces
 {
     public interface IWeatherService
     {
-        Task<WeatherData> GetWeatherAsync();
+        Task<GetCurrentResponse> GetWeatherAsync();
     }
 }
