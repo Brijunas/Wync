@@ -4,7 +4,7 @@ using FastEndpoints;
 
 namespace Api.Endpoints
 {
-    public class GetWeatherEndpoint(IWeatherService weatherService) : EndpointWithoutRequest<GetCurrentResponse>
+    public class GetWeatherEndpoint(IOpenWeatherService weatherService) : EndpointWithoutRequest<GetCurrentResponse>
     {
         public override void Configure()
         {
@@ -14,7 +14,7 @@ namespace Api.Endpoints
 
         public override async Task HandleAsync(CancellationToken ct)
         {
-            var weather = await weatherService.GetWeatherAsync();
+            var weather = await weatherService.GetCurrent();
             await SendAsync(weather, cancellation: ct);
         }
     }

@@ -8,7 +8,7 @@ namespace App
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IWeatherService, WeatherService>();
+            services.AddScoped<IOpenWeatherService, OpenWeatherService>();
 
             return services;
         }
