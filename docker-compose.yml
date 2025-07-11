@@ -1,28 +1,32 @@
 services:
-  wync-app:
+  wync-api:
+    container_name: wync-api
     build:
-      context: .          # root folder, includes all projects
-      dockerfile: Api/Dockerfile  # Dockerfile inside Api folder
+      context: .
+      dockerfile: Api/Dockerfile
     ports:
-      - "8080:8080"
+      - "18080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_URLS=http://0.0.0.0:8080
     depends_on:
-      - mongo
+      - wync-mongo
     networks:
-      - wync-net
+      - wync-network
 
-  mongo:
+  wync-mongo:
+    container_name: wync-mongo
     image: mongo:latest
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - mongo-data:/data/db
     networks:
-      - wync-net
+      - wync-network
 
 volumes:
   mongo-data:
 
 networks:
-  wync-net:
+  wync-network:
+    name: wync-network
